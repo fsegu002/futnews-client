@@ -1,0 +1,28 @@
+nav#dateNav{
+    display: grid;
+    grid-template-columns: 30% auto 30%;
+    padding: 15px 0;
+    background-color: transparent;
+    height: 62px;
+    position: relative;
+    color: var(--white);
+
+    div{
+        margin-top: 4px;
+        padding: 0 10px;
+        font-size: 1.2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:first-child{
+            justify-content: flex-end;
+        }
+        &:last-child{
+            justify-content: flex-start;
+        }
+
+        &.dateControl{
+            font-size: 2em;
+        }
+    }
+}

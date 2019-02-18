@@ -1,0 +1,87 @@
+#matches-list {
+    li.list-group-item{
+        padding: .75rem 0.6rem ;
+        margin-bottom: 6px ;
+        border-radius: 4px !important;
+        background-color: var(--white-transparent);
+        a{
+            display: block;
+            color: var(--white);
+            &:hover{
+                text-decoration: none;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            padding: .75rem 1.25rem;
+            a{
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+
+.align-3-items-row{
+    font-size: 0.85em;
+    display: grid;
+    grid-template-columns: 40% auto 40%;
+    padding: 3px 0;
+    &.game-item-icons{
+        grid-template-columns: repeat(3, 1fr);
+        div{
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i{
+                margin-right: 5px;
+            }
+        }
+    }
+}
+.game-item-team-score{
+    height: 40px;
+    margin-bottom: 5px;
+    .score-info{
+        &>div{
+            background-color: var(--greenish-dark); 
+            border-radius: 4px;           
+            font-size: 1.4em;
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            &>div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 3px 0;
+                &:first-child{
+                    border-right: 1px solid var(--greenish-light);
+                }
+            }
+        }
+    }
+    img{
+        height: 25px;
+    }
+    .home-section, .away-section{
+        display: flex;
+        align-items: center;
+        label{
+            margin: 0 8px;
+        }
+    }
+    .away-section{
+        flex-direction: row-reverse;
+    }
+}
+
+.fa-futbol{
+    color: var(--black);
+}
+.fa-fire{
+    color: #e21818;
+}
+.fa-comment-alt{
+    color: #31cc23;
+}

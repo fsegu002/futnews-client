@@ -1,0 +1,49 @@
+.play-item{
+    height: 60px;
+    position: relative;
+    list-style-type: none;
+
+    .v-line{
+        width: 0;
+        height: 60px;
+        border-left: 2px solid var(--greenish-dark);
+        border-right: 2px solid var(--greenish-dark);
+        position: absolute;
+        top: 0;
+        left: calc(100% / 2);
+    }
+
+    .play-details{
+        display: flex;
+        
+        .play{
+            position: relative;
+            width: 100%;
+            padding: 10px 0;
+            z-index: 10;
+
+            .description{
+                position: absolute;
+                top: 17px;
+                left: 15px;
+                text-align: right;
+            }
+        }
+
+        .symbol{
+            margin: 0 auto;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--blueish);
+            border: 3px solid var(--greenish-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span{
+                margin-top: 1px;
+            }
+        }
+    }
+}

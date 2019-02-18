@@ -1,0 +1,112 @@
+form{
+    margin: 10px 0;
+    .control-row{
+        padding: 10px 8px;
+        margin-bottom: 10px;
+        background-color: var(--white-transparent);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        border-radius: 3px;
+    }
+    .control-label{
+        h4{
+            font-size: 1.4em;
+        }
+    }
+
+    .team-controls{
+        display: grid;
+        grid-template-columns: 50% 50%;
+
+        &.labels{
+            & > div{
+                padding: 0;
+            }
+            label{
+                margin: 0;
+            }
+        }
+
+        &> div{
+            display: flex;
+            justify-content: center;
+            padding: 8px 0;
+            &> div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                img{
+                    height: 70px;
+                }
+                label{
+                    margin: 5px 0;
+                    font-size: 0.9em;
+                }
+            }
+        }
+    }
+
+    .time-controls{
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+
+        &> div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #ccc;
+            &:last-child{
+                border: none;
+            }
+            & i{
+                font-size: 1.2em;
+            }
+            & p{
+                margin: 0;
+            }
+        }
+    }
+
+    .play-controls{
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr;
+        
+        .control{
+            padding: 10px 0;
+
+            label{
+                font-size: 0.9em;
+                margin: 5px 0 0;
+            }
+            &> div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                i{
+                    font-size: 3em;
+                }
+            }
+
+            .fa-angle-up{
+                transform: rotate(45deg);
+            }
+            &.yellow i{
+                color: #dfdf1f;
+
+            }
+            &.red i{
+                color: rgb(221, 22, 22);
+            }
+
+            &.whistle img{
+                width: 48px;
+            }
+        }
+    }
+
+    .control-selected{
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        border: 1px solid var(--grey-darker);
+    }
+}

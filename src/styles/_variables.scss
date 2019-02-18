@@ -1,0 +1,51 @@
+:root{
+    --greenish: #249892;
+    --greenish-light: #2aa8a2;
+    --greenish-lighter: #41d6cf;
+    --greenish-dark: #178681;  
+    --greenish-darker: #0e6662;     
+    
+    --blueish: #2874a4;
+    --blueish-light: #348dc4;
+    --blueish-lighter: #47a0d8;
+    --blueish-dark: #1d638f;
+    --blueish-darker: #144e72;
+
+    --white: #f5f5f5;
+    --white-transparent: rgba(255,255,255,0.2);
+    --grey: #adadad;
+    --grey-light: #c0bebe;
+    --grey-lighter: #dbdbdb;
+    --grey-dark: #919191;
+    --grey-darker: #6e6e6e;
+    --black: #383838;
+    
+
+}
+
+.circled-btn{
+    background-color: var(--greenish-darker);
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover{
+        background-color: var(--greenish-dark);
+    }
+    &:active{
+        background-color: var(--greenish);
+    }
+}
+
+.shadow{
+    box-shadow: 0px 2px 2px 0px rgba(80,80,80,0.55);
+}
+.shadow-light{
+    box-shadow: 0px 2px 2px 0px rgba(130,130,130,0.55);
+}
+.shadow-dark{
+    box-shadow: 0px 2px 2px 0px rgba(30,30,30,0.55);
+}

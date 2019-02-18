@@ -1,0 +1,56 @@
+@import './variables';
+// @import '../customFonts/style.scss';
+@import '../components/dateNav/styles';
+@import '../components/gameItem/styles';
+@import '../components/mainNav/styles';
+@import '../components/matchHeader/styles';
+@import '../components/matchPlay/styles';
+@import '../components/NewPostForm/styles';
+
+#root{
+    position: relative;
+    color: var(--white);
+
+    .app-background{
+        z-index: -9999;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient(to right bottom, #249892, #00909b, #0088a2, #007ea5, #2874a4);
+    }
+
+    a{
+        color: var(--white);
+        &:hover{
+            color: var(--grey);
+        }
+    }
+
+    select, textarea{
+        background-color: var(--white-transparent);
+        border: 0;
+        color: var(--white);
+    }
+    select option{
+        color: var(--grey-darker);
+    }
+    textarea::placeholder{
+        color: var(--grey-lighter);
+    }
+    .btn{
+        font-weight: bold;
+    }
+    .btn-primary{
+        background-color: var(--white);
+        color: var(--greenish-dark);
+    }
+    .btn-secondary{
+        background-color: transparent;
+        border: 1px solid var(--white);
+        color: var(--white);
+    }
+
+}
