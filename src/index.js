@@ -1,4 +1,5 @@
 // import * as serviceWorker from './serviceWorker';
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -10,7 +11,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from './store/store'
 
 import './styles/stylesheets.scss'
-
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

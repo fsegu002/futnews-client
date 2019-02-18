@@ -1,7 +1,8 @@
 import React from 'react'
 
 export default function MatchPlay({ playInfo }) {
-    const {id, minute, play_type_code, player_name, player_number} = playInfo
+    const {minute,  player_name} = playInfo
+    // const {id, minute, play_type_code, player_name, player_number} = playInfo
     return (
         <li className="play-item">
             <div className="play-details">

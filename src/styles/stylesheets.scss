@@ -29,6 +29,14 @@
         }
     }
 
+    button.button-link{
+        color: var(--white);
+        background-color: transparent;
+        border: 0;
+        width: 100%;
+        text-align: left;
+    }
+
     select, textarea{
         background-color: var(--white-transparent);
         border: 0;

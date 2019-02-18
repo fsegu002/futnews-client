@@ -28,7 +28,7 @@ class MainNav extends Component {
 
                         { isUserSignedIn() ? (
                             <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={this.logOut} >Log out</a>
+                                <button className="nav-link button-link" href="#" onClick={this.logOut} >Log out</button>
                             </li>
                         ) : (
                             <li className="nav-item">
