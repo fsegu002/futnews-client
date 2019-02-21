@@ -14,5 +14,5 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=development
-      - REACT_APP_SERVER_URL=http://localhost:3030
+      - REACT_APP_SERVER_URL=http://45.55.51.144:3030
       - REACT_APP_API_V1=/api/v1
