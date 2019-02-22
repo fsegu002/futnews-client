@@ -2,17 +2,24 @@ version: '3.5'
 
 services:
 
-  client-app:
-    container_name: futnews-app
+  # client-app:
+  #   container_name: futnews-app
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - '.:/usr/src/app'
+  #     - '/usr/src/app/node_modules'
+  #   ports:
+  #     - '9090:3000'
+  #   environment:
+  #     - NODE_ENV=development
+  client-app-prod:
+    container_name: futnews-app-prod
     build:
       context: .
-      dockerfile: Dockerfile
-    volumes:
-      - '.:/usr/src/app'
-      - '/usr/src/app/node_modules'
+      dockerfile: Dockerfile-prod
     ports:
-      - '3000:3000'
+      - '80:80'
     environment:
-      - NODE_ENV=development
-      - REACT_APP_SERVER_URL=http://45.55.51.144:3030
-      - REACT_APP_API_V1=/api/v1
+      - NODE_ENV=production

@@ -7,6 +7,7 @@ console.log('process.env ', process.env)
 
 const axiosInstance = axios.create({
     baseURL: baseUrl,
+    crossdomain: true,
     headers: {
         'Content-Type': 'application/json'
     }
@@ -25,6 +26,7 @@ const token = () => {
 
 const axiosTokenInstance = axios.create({
     baseURL: baseUrl,
+    crossdomain: true,
     headers: {
         'Content-Type': 'application/json',
         'Authorization': token()
