@@ -42,25 +42,6 @@
 .game-item-team-score{
     height: 40px;
     margin-bottom: 5px;
-    .score-info{
-        &>div{
-            background-color: var(--greenish-dark); 
-            border-radius: 4px;           
-            font-size: 1.4em;
-            display: grid;
-            grid-template-columns: 50% 50%;
-
-            &>div{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 3px 0;
-                &:first-child{
-                    border-right: 1px solid var(--greenish-light);
-                }
-            }
-        }
-    }
     img{
         height: 25px;
     }
