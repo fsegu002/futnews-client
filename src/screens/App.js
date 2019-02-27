@@ -7,6 +7,7 @@ import SignIn from './SignIn';
 import { connect } from 'react-redux'
 import MainNav from '../components/mainNav';
 import { PrivateRoute } from '../helpers/PrivateRoute';
+import ComponentList from './ComponentList';
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
                         <PrivateRoute exact path="/match/:matchId" component={Match} />
                         <PrivateRoute exact path="/match/:matchId/newMatch" component={NewPostForm} />
                         <Route path="/signin" component={SignIn} />
+                        <Route path="/component-list" component={ComponentList} />
                     </Switch>
                 </div>
                 <div className="app-background"></div>
