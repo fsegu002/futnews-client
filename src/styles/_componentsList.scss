@@ -1,0 +1,13 @@
+.component-list{
+    background-color: #fff;
+    padding-top: 40px;
+    height: calc(100vh - 56px);
+    color: var(--grey-darker);
+
+    #side-nav{
+        border-right: 1px solid var(--grey-light);
+        a{
+            color: var(--grey-darker);
+        }
+    }
+}
