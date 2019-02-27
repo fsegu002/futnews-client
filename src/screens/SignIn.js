@@ -4,11 +4,14 @@ import { axiosInstance } from '../services/axiosConfig';
 import { authUser } from '../store/actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 
 class SignInPage extends Component {
   state = {
     redirectHome: false
+  }
+  
+  componentDidUpdate = (prevProps, prevState) => {
+    console.log('state user', this.state)
   }
   
 
@@ -19,8 +22,7 @@ class SignInPage extends Component {
     axiosInstance.post('/authenticate', formValues)
       .then(({data}) => {
         this.props.authUser(data)
-
-        this.setState({redirectHome: true})
+        this.props.history.push("/");
       })
       .catch(err => console.error(err))
   }
@@ -33,9 +35,8 @@ class SignInPage extends Component {
   render() {
     return (
       <div className="container">
-        { (this.state.redirectHome) ? <Redirect to='/' /> : false }
-        <div className="row">
-          <div className="col-md-12">
+        <div id="sign-in">
+          <div className="form-container">
             <h3>Sign in</h3>
 
             <Form getApi={this.setFormApi} onSubmit={this.handleSubmit}>
@@ -57,8 +58,7 @@ class SignInPage extends Component {
               </div>
               <button type="submit"
                       className="btn btn-primary" >Submit</button>
-            </Form>            
-
+            </Form>  
           </div>
         </div>
       </div>
