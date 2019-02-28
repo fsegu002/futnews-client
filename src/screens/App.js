@@ -11,14 +11,19 @@ import ComponentList from './ComponentList';
 
 
 class App extends Component {
+    componentDidMount = () => {
+        document.title = 'Sign In'
+      console.log('user', this.props)
+    }
+    
     render() {
         return (
             <div>
-                { !this.props.user.token ? <Redirect to="/signin" /> : false } 
+                { !this.props.user.isUserAuthenticated ? <Redirect to="/signin" /> : false } 
                 <MainNav />
                 <div style={{'paddingTop': '56px'}}>
                     <Switch>
-                        <PrivateRoute exact path="/" component={Home} />
+                        <PrivateRoute exact path="/home" component={Home} />
                         <PrivateRoute exact path="/match/:matchId" component={Match} />
                         <PrivateRoute exact path="/match/:matchId/newMatch" component={NewPostForm} />
                         <Route path="/signin" component={SignIn} />

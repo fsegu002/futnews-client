@@ -19,6 +19,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    document.title = 'Home'
     if(!this.state.didUserSignIn){
       if(isUserSignedIn){
         this.parseDate()

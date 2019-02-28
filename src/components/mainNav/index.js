@@ -1,14 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { isUserSignedIn } from '../../store/localStorage'
 import { logOutUser } from '../../store/actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class MainNav extends Component {
+    state = {
+        navItemClass: ['collapse', 'navbar-collapse']
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        console.log('state', this.props.user.isUserAuthenticated)
+    }
+    
+
     logOut = this.logOut.bind(this)
     logOut() {
         this.props.logOutUser()
+    }
+
+    collapseNav = this.collapseNav.bind(this)
+    collapseNav() {
+        const newArr = Object.create(this.state.navItemClass)
+        newArr.concat(['hide'])
+        this.setState({navItemClass: newArr})
     }
 
     render() {
@@ -20,13 +35,13 @@ class MainNav extends Component {
                         <i className="fas fa-bars"></i>
                     </button>
             
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className={this.state.navItemClass.join(' ')} id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/" >Home</Link>
+                                <Link className="nav-link" to="/" onClick={this.collapseNav} >Home</Link>
                             </li>
 
-                        { isUserSignedIn() ? (
+                        { this.props.user.isUserAuthenticated ? (
                             <li className="nav-item">
                                 <button className="nav-link button-link" href="#" onClick={this.logOut} >Log out</button>
                             </li>
@@ -42,7 +57,11 @@ class MainNav extends Component {
         )
     }
 }
-
+const mapStateToProps = (state) => {
+    return {
+      ...state
+    }
+}
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({
       logOutUser
@@ -50,7 +69,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 MainNav = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(MainNav)
 

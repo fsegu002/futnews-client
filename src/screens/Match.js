@@ -23,16 +23,12 @@ export default class Match extends Component {
                     match: response.data.match,
                     posts: response.data.posts
                 })
+                document.title = this.state.match.teams[0].short_name + ' vs ' + this.state.match.teams[1].short_name
             })
             .catch(e => {
                 console.warn('error: ', e)
             })
-    }    
-
-    componentDidUpdate = (prevProps, prevState) => {
-        console.log(this.state)
-    }
-    
+    }      
 
     back = this.back.bind(this)
     back() {

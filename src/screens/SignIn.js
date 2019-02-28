@@ -7,13 +7,10 @@ import { connect } from 'react-redux'
 
 class SignInPage extends Component {
   state = {
-    redirectHome: false
-  }
-  
-  componentDidUpdate = (prevProps, prevState) => {
-    console.log('state user', this.state)
-  }
-  
+    redirectHome: false,
+    invalidForm: false,
+    invalidFormClass: null
+  }  
 
   handleSubmit = this.handleSubmit.bind(this)
   handleSubmit() {
@@ -22,9 +19,15 @@ class SignInPage extends Component {
     axiosInstance.post('/authenticate', formValues)
       .then(({data}) => {
         this.props.authUser(data)
-        this.props.history.push("/");
+        this.props.history.push("/home");
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err)
+        this.setState({ 
+          invalidForm: true,
+          invalidFormClass: 'is-invalid'
+        })
+      })
   }
 
   setFormApi = this.setFormApi.bind(this)
@@ -44,7 +47,7 @@ class SignInPage extends Component {
                 <label htmlFor="signInEmail">Email address</label>
                 <Text field="email" 
                       type="email"
-                      className="form-control"
+                      className={'form-control ' + this.state.invalidFormClass}
                       id="signInEmail"
                       placeholder="Type your email"/>
               </div>
@@ -52,9 +55,12 @@ class SignInPage extends Component {
                 <label htmlFor="signInPassword">Password</label>
                 <Text field="password" 
                       type="password"
-                      className="form-control"
+                      className={'form-control ' + this.state.invalidFormClass}
                       id="signInPassword"
                       placeholder="Type your password"/>
+                <div className="invalid-feedback">
+                  Wrong email or password
+                </div>
               </div>
               <button type="submit"
                       className="btn btn-primary" >Submit</button>

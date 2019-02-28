@@ -3,6 +3,10 @@ import { PrimaryButton } from '../components/buttons';
 
 
 class ComponentList extends Component {
+    componentDidMount = () => {
+        document.title = 'Components List'
+    }
+    
     render() {
         return (
             <div className="container-fluid component-list">
