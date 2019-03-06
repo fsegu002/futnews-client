@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { axiosTokenInstance } from '../../services/axiosConfig';
+import { savePost } from '../../services/post.service'
+import { getMatch } from '../../services/matches.service'
+import { getPlayTypes } from '../../services/playType.service'
+import { getTeamPlayers } from '../../services/players.service'
 
 export default class NewPostForm extends Component {
     state = {
@@ -13,7 +16,7 @@ export default class NewPostForm extends Component {
 
     componentDidMount() {
         const {matchId} = this.props.match.params
-        axiosTokenInstance.get('/matches/'+ this.props.match.params.matchId)
+        getMatch(this.props.match.params.matchId)
             .then(({data}) => {
                 const post = Object.assign({}, this.state.post)
                 post.match_id = parseInt(matchId)
@@ -28,7 +31,7 @@ export default class NewPostForm extends Component {
                     return Object.assign({selected: ''}, el)
                 })
                 this.setState({teams: teamsArr})
-                return axiosTokenInstance.get('/play_type')
+                return getPlayTypes()
             })
             .then(({data}) => {
                 const playTypes = data.map(el => {
@@ -53,7 +56,7 @@ export default class NewPostForm extends Component {
 
     getPlayers = this.getPlayers.bind(this)
     getPlayers(teamId) {
-        axiosTokenInstance.get('/players/' + teamId)
+        getTeamPlayers(teamId)
             .then(({data}) => {
                 this.setState({players: data})
             })
@@ -116,7 +119,7 @@ export default class NewPostForm extends Component {
         const post = Object.assign({}, this.state.post)
         post.description = desc
         
-        axiosTokenInstance.post('/posts', post)
+        savePost(post)
             .then(response => {
                 this.goBack()
             })

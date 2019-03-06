@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { axiosTokenInstance } from '../services/axiosConfig';
 import { Redirect } from 'react-router-dom'
 import GameItem from '../components/gameItem';
 import MatchHeader from '../components/matchHeader';
 import MatchPlay from '../components/matchPlay';
+import { getMatch } from '../services/matches.service';
 
 export default class Match extends Component {
     state = {
@@ -14,7 +14,7 @@ export default class Match extends Component {
 
     componentDidMount() {
         const { matchId } = this.props.match.params
-        axiosTokenInstance.get('/matches/'+matchId)
+        getMatch(matchId)
             .then((response) => {
                 if(response.data.status === 401) {
                     return this.setState({redirectToSignIn: true})

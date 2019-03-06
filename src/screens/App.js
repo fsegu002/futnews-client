@@ -13,7 +13,7 @@ import ComponentList from './ComponentList';
 class App extends Component {
     componentDidMount = () => {
         document.title = 'Sign In'
-      console.log('user', this.props)
+      console.log('state', this.props)
     }
     
     render() {

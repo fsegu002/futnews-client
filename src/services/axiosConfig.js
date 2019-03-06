@@ -3,13 +3,6 @@ import { loadState } from '../store/localStorage'
 
 const baseUrl = process.env.REACT_APP_SERVER_URL + process.env.REACT_APP_API_V1
 
-const axiosInstance = axios.create({
-    baseURL: baseUrl,
-    crossdomain: true,
-    headers: {
-        'Content-Type': 'application/json'
-    }
-})
 const state = loadState('persist:root')
 const parseUser = (userString) => {
     return JSON.parse(userString)
@@ -22,7 +15,8 @@ const token = () => {
     }
 }
 
-const axiosTokenInstance = axios.create({
+
+export const axiosInstance = axios.create({
     baseURL: baseUrl,
     crossdomain: true,
     headers: {
@@ -30,8 +24,9 @@ const axiosTokenInstance = axios.create({
         'Authorization': token()
     }
 })
-
-export { 
-    axiosInstance,
-    axiosTokenInstance
-}
+axiosInstance.interceptors.request.use(
+    config => {
+        config.headers = { Authorization: token() };
+        return config;
+    }, error => Promise.reject(error)
+);

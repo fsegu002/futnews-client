@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { axiosTokenInstance } from '../services/axiosConfig'
 import DateNav from '../components/dateNav';
 import GameItem from '../components/gameItem';
 import moment from 'moment';
@@ -7,26 +6,25 @@ import { Link } from 'react-router-dom';
 import { BallIndicator, MomentumIndicator, CommentsIndicator } from '../components/infoIndicators';
 import qs from 'query-string';
 import { Redirect } from 'react-router-dom'
-import { isUserSignedIn } from '../store/localStorage'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { getAllMatches } from '../services/matches.service'
+import { saveMatches } from '../store/actions'
 
 
-export default class Home extends Component {
+class Home extends Component {
   state = {
     matches: [],
+    matchesReady: false,
     matchDate: null,
-    redirectToSignIn: false,
-    didUserSignIn: false
+    redirectToSignIn: false
   }
 
   componentDidMount() {
     document.title = 'Home'
-    if(!this.state.didUserSignIn){
-      if(isUserSignedIn){
-        this.parseDate()
-        this.setState({didUserSignIn: true}, () => console.log('match state', this.state))
-      }
-    }
+    this.parseDate()
   }
+  
   
   parseDate = this.parseDate.bind(this)
   parseDate() {
@@ -42,18 +40,22 @@ export default class Home extends Component {
   requestDate = this.requestDate.bind(this)
   requestDate(dateSelected) {
     const formattedDate = moment(dateSelected).format("YYYY-MM-DD")
-    this.props.history.push('?matchDate=' + formattedDate)
-    axiosTokenInstance.get('matches?date_selected=' + formattedDate)
-      .then(({data, status}) => { 
-        if(status === 401) {
-            return this.setState({redirectToSignIn: true})
-        }
-        this.setState({ matches: data })
+    this.addDateToUri(formattedDate)
+    // add axios here
+    getAllMatches(formattedDate)
+    .then(({data}) => {
+      console.log(data)
+      if(data.error) throw Error("Error with code: ", data.status)
+        this.props.saveMatches(data)
       })
-      .catch(err => {
-        console.error('There was an error: ', err)
-        // HANDLE DATE ERROR
-      })
+      .then(() => this.setState({matches: this.props.matches.matches}))
+      .catch(err => console.error(err))
+
+  }
+  
+  addDateToUri =  this.addDateToUri.bind(this)
+  addDateToUri(date) {
+    this.props.history.push('?matchDate=' + date)
   }
 
   buildMatches = this.buildMatches.bind(this)
@@ -76,7 +78,7 @@ export default class Home extends Component {
   }
 
   render() {    
-    const matchList = this.buildMatches()
+    const matchList = (this.state.matches) ? this.buildMatches() : false
 
     return (
       <div>
@@ -93,3 +95,18 @@ export default class Home extends Component {
     )
   }
 }
+
+const mapStateToProps = ({user, matches}) => ({ user, matches })
+
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    saveMatches
+  }, dispatch)
+}
+
+Home = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home)
+export default Home 

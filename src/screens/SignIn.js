@@ -1,31 +1,39 @@
 import React, { Component } from 'react'
 import { Form, Text } from 'informed'
-import { axiosInstance } from '../services/axiosConfig';
+import { signin } from '../services/sigin.services'
 import { authUser } from '../store/actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
 
 class SignInPage extends Component {
   state = {
     redirectHome: false,
     invalidForm: false,
-    invalidFormClass: null
+    invalidFormClass: null,
+    submitClicked: false
   }  
 
   handleSubmit = this.handleSubmit.bind(this)
   handleSubmit() {
     let formValues = this.formApi.getState().values
+    this.setState({submitClicked: true})
 
-    axiosInstance.post('/authenticate', formValues)
+    signin(formValues)
       .then(({data}) => {
-        this.props.authUser(data)
-        this.props.history.push("/home");
+        return this.props.authUser(data)
+      })
+      .then(() => {
+        this.setState({ redirectHome: true })
+        // window.location.reload()
       })
       .catch(err => {
         console.error(err)
         this.setState({ 
           invalidForm: true,
-          invalidFormClass: 'is-invalid'
+          invalidFormClass: 'is-invalid',
+          submitClicked: false
         })
       })
   }
@@ -38,6 +46,7 @@ class SignInPage extends Component {
   render() {
     return (
       <div className="container">
+        { (this.state.redirectHome) ? <Redirect to="/home" /> : false }
         <div id="sign-in">
           <div className="form-container">
             <h3>Sign in</h3>
@@ -62,8 +71,10 @@ class SignInPage extends Component {
                   Wrong email or password
                 </div>
               </div>
-              <button type="submit"
-                      className="btn btn-primary" >Submit</button>
+              <button 
+                disabled={this.state.submitClicked}
+                type="submit"
+                className={"btn btn-primary " + ((this.state.submitClicked)?'disabled':'')} >Submit</button>
             </Form>  
           </div>
         </div>

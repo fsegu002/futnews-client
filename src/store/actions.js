@@ -8,7 +8,13 @@ const logOutUser = () => ({
     payload: {}
 })
 
+const saveMatches = matches => ({
+    type: 'SAVE_MATCHES_TO_STATE',
+    payload: matches
+})
+
 export { 
     authUser,
-    logOutUser
+    logOutUser,
+    saveMatches
 }

@@ -1,25 +1,12 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { loadState } from '../store/localStorage'
+import { connect } from 'react-redux'
 
-
-const state = loadState('persist:root')
-const parseUser = (userString) => {
-    return JSON.parse(userString)
-}
-const token = () => {
-    try{
-        return (parseUser(state.user).token !== null)
-    } catch(e) {
-        console.warn('Did not find property token', e)
-    }
-}
-
-export const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
+const PrivateRouteComponent = ({ component: Component, user, ...rest }) => 
+    (<Route
         {...rest}
         render={props =>
-            token() ? (
+            user.isUserAuthenticated ? (
             <Component {...props} />
             ) : (
             <Redirect
@@ -30,6 +17,15 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
             />
             )
         }
-    />
-);
-  
+    />);
+
+const mapStateToProps = (state) => {
+    return {
+      user: state.user
+    }
+}
+
+export const PrivateRoute = connect(
+    mapStateToProps,
+    null
+)(PrivateRouteComponent)
