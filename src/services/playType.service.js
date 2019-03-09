@@ -1,7 +1,7 @@
-import { axiosInstance } from './axiosConfig'
+import { http } from './axiosConfig'
 
 const uri = 'play_type';
 
 export const getPlayTypes = () => {
-    return axiosInstance.get(uri);
+    return http.get(uri);
 }

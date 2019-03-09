@@ -1,7 +1,7 @@
-import { axiosInstance } from './axiosConfig'
+import { http } from './axiosConfig'
 
 const uri = '/authenticate';
 
 export const signin = (formData) => {
-    return axiosInstance.post(uri, formData);
+    return http.post(uri, formData);
 }

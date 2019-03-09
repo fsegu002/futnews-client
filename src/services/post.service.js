@@ -1,7 +1,7 @@
-import { axiosInstance } from './axiosConfig'
+import { http } from './axiosConfig'
 
 const uri = 'posts';
 
 export const savePost = (formValues) => {
-    return axiosInstance.post(uri, formValues)
+    return http.post(uri, formValues)
 }

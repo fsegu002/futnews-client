@@ -1,32 +1,31 @@
 import axios from 'axios'
 import { loadState } from '../store/localStorage'
+import { store } from '../store/store'
 
 const baseUrl = process.env.REACT_APP_SERVER_URL + process.env.REACT_APP_API_V1
 
-const state = loadState('persist:root')
-const parseUser = (userString) => {
-    return JSON.parse(userString)
-}
-const token = () => {
-    try{
-        return parseUser(state.user).token
-    } catch(e) {
-        console.warn('Did not find property token', e)
-    }
-}
-
-
-export const axiosInstance = axios.create({
+const baseAxiosBody = {
     baseURL: baseUrl,
     crossdomain: true,
     headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token()
+        'Content-Type': 'application/json'
     }
-})
-axiosInstance.interceptors.request.use(
+}
+
+export const http = axios.create(baseAxiosBody)
+
+http.interceptors.request.use(
     config => {
-        config.headers = { Authorization: token() };
+        if(!config.headers.Authorization){
+            let authToken = store.getState().user.token
+            if(authToken){
+                console.log('authToken', authToken)
+                config.headers = { Authorization: authToken };
+            }
+        }
         return config;
-    }, error => Promise.reject(error)
+    }, error => {
+        console.error('errorrrrrrr', error)
+        Promise.reject(error)
+    }
 );

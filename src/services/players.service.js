@@ -1,7 +1,7 @@
-import { axiosInstance } from './axiosConfig'
+import { http } from './axiosConfig'
 
 const uri = 'players';
 
 export const getTeamPlayers = (teamId) => {
-    return axiosInstance.get(`${uri}/${teamId}`)
+    return http.get(`${uri}/${teamId}`)
 }
