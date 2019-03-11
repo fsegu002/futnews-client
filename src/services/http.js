@@ -19,7 +19,6 @@ http.interceptors.request.use(
         if(!config.headers.Authorization){
             let authToken = store.getState().user.token
             if(authToken){
-                console.log('authToken', authToken)
                 config.headers = { Authorization: authToken };
             }
         }

@@ -1,4 +1,4 @@
-import { http } from './axiosConfig'
+import { http } from './http'
 
 const uri = '/authenticate';
 

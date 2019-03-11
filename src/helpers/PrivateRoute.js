@@ -19,9 +19,9 @@ const PrivateRouteComponent = ({ component: Component, user, ...rest }) =>
         }
     />);
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({user}) => {
     return {
-      user: state.user
+      user
     }
 }
 

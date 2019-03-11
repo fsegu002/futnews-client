@@ -11,16 +11,10 @@ import ComponentList from './ComponentList';
 import SignUp from './SignUp';
 
 
-class App extends Component {
-    componentDidMount = () => {
-        document.title = 'Sign In'
-      console.log('state', this.props)
-    }
-    
+class App extends Component {    
     render() {
         return (
             <div>
-                { !this.props.user.isUserAuthenticated ? <Redirect to="/signin" /> : false } 
                 <MainNav />
                 <div style={{'paddingTop': '56px'}}>
                     <Switch>
