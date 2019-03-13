@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Form, Text } from 'informed'
-import { signin } from '../services/sigin.services'
+import { signIn } from '../services/auth.services'
 import { authUser } from '../store/actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 
 class SignInPage extends Component {
@@ -20,7 +20,7 @@ class SignInPage extends Component {
     let formValues = this.formApi.getState().values
     this.setState({submitClicked: true})
 
-    signin(formValues)
+    signIn(formValues)
       .then(({data}) => {
         return this.props.authUser(data)
       })
@@ -46,10 +46,12 @@ class SignInPage extends Component {
   render() {
     return (
       <div className="container">
-        { (this.state.redirectHome) ? <Redirect to="/home" /> : false }
+        { (this.state.redirectHome) ? <Redirect to="/" /> : false }
         <div className="credentials-form">
           <div className="form-container">
-            <h3>Sign in</h3>
+          <header className="d-flex">
+              <h3>Sign In</h3> <span>or <Link className="btn btn-link" to="/signup" >Sign Up</Link></span>
+            </header>            
 
             <Form getApi={this.setFormApi} onSubmit={this.handleSubmit}>
               <div className="form-group">

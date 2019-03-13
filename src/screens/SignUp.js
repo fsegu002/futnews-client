@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Form, Text } from 'informed'
-// import { signin } from '../services/sigin.services'
-import { authUser } from '../store/actions'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { signUp } from '../services/auth.services'
+// import { authUser } from '../store/actions'
+// import { bindActionCreators } from 'redux'
+// import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 
 export default class SignUp extends Component {
@@ -12,31 +12,49 @@ export default class SignUp extends Component {
     redirectHome: false,
     invalidForm: false,
     invalidFormClass: null,
-    submitClicked: false
-  }  
+    disableSubmit: true,
+    formFields: {
+      email: '',
+      password: '',
+      password_confirmation: ''
+    }
+  }
+
+  getFormValues = this.getFormValues.bind(this)
+  getFormValues() {
+    const {email, password, password_confirmation} = this.formApi.getState().values
+    this.setState({formFields: {email, password, password_confirmation}}, () => console.log(this.state.formFields))
+    this.validateForm()
+  }
+
+  // TODO: fix validation
+  validateForm = this.validateForm.bind(this)
+  validateForm() {
+    const {email, password, password_confirmation} = this.state.formFields
+    this.setState({invalidForm: false})    
+    if( email){
+      this.setState({disableSubmit: false})
+    } else {
+      console.error('Passwords don\' match.')
+      this.setState({disableSubmit: true})
+    }
+  }
 
   handleSubmit = this.handleSubmit.bind(this)
   handleSubmit() {
-    let formValues = this.formApi.getState().values
-    console.log(formValues);
-    this.setState({submitClicked: true})
-
-    // signin(formValues)
-    //   .then(({data}) => {
-    //     return this.props.authUser(data)
-    //   })
-    //   .then(() => {
-    //     this.setState({ redirectHome: true })
-    //     // window.location.reload()
-    //   })
-    //   .catch(err => {
-    //     console.error(err)
-    //     this.setState({ 
-    //       invalidForm: true,
-    //       invalidFormClass: 'is-invalid',
-    //       submitClicked: false
-    //     })
-    //   })
+    signUp(this.state.formFields)
+      .then(response => {
+        console.log('response', response)
+        this.setState({ disableSubmit: false })
+      })
+      .catch(err => {
+        console.error('Create user error', err)
+        this.setState({ 
+          invalidForm: true,
+          invalidFormClass: 'is-invalid',
+          disableSubmit: false
+        })
+      })
   }
 
   setFormApi = this.setFormApi.bind(this)
@@ -49,9 +67,12 @@ export default class SignUp extends Component {
       <div className="container">
         <div className="credentials-form">
           <div className="form-container">
-            <h3>Sign up</h3>
+            <header className="d-flex">
+              <h3>Sign up</h3> <span>or <Link className="btn btn-link" to="/signin" >Sign In</Link></span>
+            </header>
 
-            <Form getApi={this.setFormApi} onSubmit={this.handleSubmit}>
+            <Form getApi={this.setFormApi} 
+                  onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label htmlFor="signUpEmail">Email address</label>
                 <Text field="email" 
@@ -65,27 +86,27 @@ export default class SignUp extends Component {
                 <Text field="password" 
                       type="password"
                       className={'form-control ' + this.state.invalidFormClass}
+                      onChange={this.getFormValues} 
                       id="signUpPassword"
-                      placeholder="Type your password"/>
-                <div className="invalid-feedback">
-                  Wrong email or password
-                </div>
+                      placeholder="Type your new password"
+                      />
               </div>
               <div className="form-group">
                 <label htmlFor="signUpConfirmPassword">Confirm Password</label>
-                <Text field="confirm_password" 
+                <Text field="password_confirmation" 
+                      onChange={this.getFormValues} 
                       type="password"
                       className={'form-control ' + this.state.invalidFormClass}
                       id="signUpConfirmPassword"
                       placeholder="Confirm password"/>
                 <div className="invalid-feedback">
-                  Wrong email or password
+                  Passwords don't match
                 </div>
               </div>
               <button 
-                disabled={this.state.submitClicked}
+                disabled={this.state.disableSubmit}
                 type="submit"
-                className={"btn btn-primary " + ((this.state.submitClicked)?'disabled':'')} >Submit</button>
+                className={"btn btn-primary " + ((this.state.disableSubmit)?'disabled':'')} >Submit</button>
             </Form>  
           </div>
         </div>

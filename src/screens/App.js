@@ -11,19 +11,21 @@ import ComponentList from './ComponentList';
 import SignUp from './SignUp';
 
 
-class App extends Component {    
+class App extends Component {   
     render() {
         return (
             <div>
                 <MainNav />
                 <div style={{'paddingTop': '56px'}}>
                     <Switch>
-                        <PrivateRoute exact path="/home" component={Home} />
+                        <PrivateRoute exact path="/" component={Home} />
                         <PrivateRoute exact path="/match/:matchId" component={Match} />
                         <PrivateRoute exact path="/match/:matchId/newMatch" component={NewPostForm} />
                         <Route path="/signin" component={SignIn} />
                         <Route path="/signup" component={SignUp} />
-                        <Route path="/component-list" component={ComponentList} />
+
+                        // ONLY DISPLAY 'components list' ON DEVELOPMENT 
+                        { (process.env.NODE_ENV === 'development') ? <Route path="/component-list" component={ComponentList} /> : false }
                     </Switch>
                 </div>
                 <div className="app-background"></div>
