@@ -12,8 +12,20 @@ class SignInPage extends Component {
     redirectHome: false,
     invalidForm: false,
     invalidFormClass: null,
-    submitClicked: false
+    submitClicked: false,
+    disableSubmit: true
   }  
+
+  validateForm = this.validateForm.bind(this)
+  validateForm() {
+    const {password} = this.formApi.getState().values
+    this.setState({invalidForm: false}) 
+    if(password.length > 7){
+      this.setState({disableSubmit: false}, () => console.log('pass', password))
+    } else {
+      this.setState({disableSubmit: true}, () => console.log('no pass', password))
+    }
+  }
 
   handleSubmit = this.handleSubmit.bind(this)
   handleSubmit() {
@@ -60,12 +72,14 @@ class SignInPage extends Component {
                       type="email"
                       className={'form-control ' + this.state.invalidFormClass}
                       id="signInEmail"
+                      required
                       placeholder="Type your email"/>
               </div>
               <div className="form-group">
                 <label htmlFor="signInPassword">Password</label>
                 <Text field="password" 
                       type="password"
+                      onChange={this.validateForm}
                       className={'form-control ' + this.state.invalidFormClass}
                       id="signInPassword"
                       placeholder="Type your password"/>
@@ -74,7 +88,7 @@ class SignInPage extends Component {
                 </div>
               </div>
               <button 
-                disabled={this.state.submitClicked}
+                disabled={this.state.submitClicked || this.state.disableSubmit}
                 type="submit"
                 className={"btn btn-primary " + ((this.state.submitClicked)?'disabled':'')} >Submit</button>
             </Form>  

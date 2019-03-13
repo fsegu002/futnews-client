@@ -23,19 +23,20 @@ export default class SignUp extends Component {
   getFormValues = this.getFormValues.bind(this)
   getFormValues() {
     const {email, password, password_confirmation} = this.formApi.getState().values
-    this.setState({formFields: {email, password, password_confirmation}}, () => console.log(this.state.formFields))
-    this.validateForm()
+    console.log(password)
+    this.setState(
+      {formFields: {email, password, password_confirmation}},
+      () => (password && password_confirmation) ? this.validateForm() : false
+    )    
   }
 
-  // TODO: fix validation
   validateForm = this.validateForm.bind(this)
   validateForm() {
     const {email, password, password_confirmation} = this.state.formFields
-    this.setState({invalidForm: false})    
-    if( email){
+    this.setState({invalidForm: false}) 
+    if(password.length > 7 && password === password_confirmation){
       this.setState({disableSubmit: false})
     } else {
-      console.error('Passwords don\' match.')
       this.setState({disableSubmit: true})
     }
   }
@@ -78,8 +79,11 @@ export default class SignUp extends Component {
                 <Text field="email" 
                       type="email"
                       className={'form-control ' + this.state.invalidFormClass}
+                      onChange={this.getFormValues} 
                       id="signUpEmail"
-                      placeholder="Type your email"/>
+                      placeholder="Type your email"
+                      required
+                      />
               </div>
               <div className="form-group">
                 <label htmlFor="signUpPassword">Password</label>
