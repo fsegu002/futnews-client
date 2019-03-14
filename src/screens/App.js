@@ -9,6 +9,7 @@ import MainNav from '../components/mainNav';
 import { PrivateRoute } from '../helpers/PrivateRoute';
 import ComponentList from './ComponentList';
 import SignUp from './SignUp';
+import ConfirmNewUser from './ConfirmNewUser';
 
 
 class App extends Component {   
@@ -23,6 +24,7 @@ class App extends Component {
                         <PrivateRoute exact path="/match/:matchId/newMatch" component={NewPostForm} />
                         <Route path="/signin" component={SignIn} />
                         <Route path="/signup" component={SignUp} />
+                        <Route path="/confirm-new-user" component={ConfirmNewUser} />
 
                         // ONLY DISPLAY 'components list' ON DEVELOPMENT 
                         { (process.env.NODE_ENV === 'development') ? <Route path="/component-list" component={ComponentList} /> : false }
