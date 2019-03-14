@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 const initialUserState = {
     isUserAuthenticated: false,
+    isUserActive: false,
     user: null,
     token: null
 }
@@ -14,6 +15,12 @@ const user = (state = initialUserState, {type, payload}) => {
                 isUserAuthenticated: true,
                 user: payload.user,
                 token: payload.token
+            }
+            return state
+        case 'ACTIVATE_USER':
+            state = {
+                ...state,
+                isUserActive: true
             }
             return state
         case 'LOGOUT_USER':

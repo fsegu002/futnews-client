@@ -38,7 +38,6 @@ class SignInPage extends Component {
       })
       .then(() => {
         this.setState({ redirectHome: true })
-        // window.location.reload()
       })
       .catch(err => {
         console.error(err)

@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Form, Text } from 'informed'
 import { signUp } from '../services/auth.services'
-// import { authUser } from '../store/actions'
-// import { bindActionCreators } from 'redux'
-// import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { authUser } from '../store/actions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Link, Redirect } from 'react-router-dom'
 
 
-export default class SignUp extends Component {
+class SignUpPage extends Component {
   state = {
-    redirectHome: false,
+    redirectToHome: false,
     invalidForm: false,
     invalidFormClass: null,
     disableSubmit: true,
@@ -23,7 +23,6 @@ export default class SignUp extends Component {
   getFormValues = this.getFormValues.bind(this)
   getFormValues() {
     const {email, password, password_confirmation} = this.formApi.getState().values
-    console.log(password)
     this.setState(
       {formFields: {email, password, password_confirmation}},
       () => (password && password_confirmation) ? this.validateForm() : false
@@ -32,7 +31,7 @@ export default class SignUp extends Component {
 
   validateForm = this.validateForm.bind(this)
   validateForm() {
-    const {email, password, password_confirmation} = this.state.formFields
+    const {password, password_confirmation} = this.state.formFields
     this.setState({invalidForm: false}) 
     if(password.length > 7 && password === password_confirmation){
       this.setState({disableSubmit: false})
@@ -43,10 +42,11 @@ export default class SignUp extends Component {
 
   handleSubmit = this.handleSubmit.bind(this)
   handleSubmit() {
+    this.setState({disableSubmit: true})
     signUp(this.state.formFields)
-      .then(response => {
-        console.log('response', response)
-        this.setState({ disableSubmit: false })
+      .then(({data}) => {
+        this.props.authUser(data)
+        this.setState({redirectToHome: true})
       })
       .catch(err => {
         console.error('Create user error', err)
@@ -66,6 +66,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="container">
+        {(this.state.redirectToHome) ? <Redirect to="/" /> : false }  
         <div className="credentials-form">
           <div className="form-container">
             <header className="d-flex">
@@ -120,20 +121,20 @@ export default class SignUp extends Component {
 }
 
 
-// const mapStateToProps = (state) => {
-//   return {
-//     ...state
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    ...state
+  }
+}
 
-// const mapDispatchToProps = dispatch => {
-//   return bindActionCreators({
-//     authUser
-//   }, dispatch)
-// }
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    authUser
+  }, dispatch)
+}
 
-// const SignIn = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(SignUpPage)
-// export default SignIn 
+const SignUp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUpPage)
+export default SignUp 

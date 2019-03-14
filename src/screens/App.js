@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Home from './Home'
 import Match from './Match';
 import NewPostForm from '../components/NewPostForm/NewPostForm';
@@ -24,9 +24,9 @@ class App extends Component {
                         <PrivateRoute exact path="/match/:matchId/newMatch" component={NewPostForm} />
                         <Route path="/signin" component={SignIn} />
                         <Route path="/signup" component={SignUp} />
-                        <Route path="/confirm-new-user" component={ConfirmNewUser} />
+                        <Route path="/confirm-new-user/:userId" component={ConfirmNewUser} />
 
-                        // ONLY DISPLAY 'components list' ON DEVELOPMENT 
+                        {/* ONLY DISPLAY 'components list' ON DEVELOPMENT  */}
                         { (process.env.NODE_ENV === 'development') ? <Route path="/component-list" component={ComponentList} /> : false }
                     </Switch>
                 </div>

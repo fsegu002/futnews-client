@@ -1,7 +1,7 @@
 import { http } from './http'
 
 const signInUri = '/authenticate';
-const signUpUri = '/users/create';
+const usersUri = '/users/';
 
 /**
  * SignIn post method
@@ -17,5 +17,13 @@ export const signIn = (formData) => {
  * @param {Object} formData 
  */
 export const signUp = (formData) => {
-    return http.post(signUpUri, formData)
+    return http.post(usersUri + 'create', formData)
+}
+
+/**
+ * Activate user method
+ * @param {String} userId 
+ */
+export const activate = (userId) => {
+    return http.post(usersUri + userId + '/confirm_user')
 }

@@ -3,6 +3,11 @@ const authUser = user => ({
     payload: user,
 })
 
+const activateUser = user => ({
+    type: 'ACTIVATE_USER',
+    payload: user,
+})
+
 const logOutUser = () => ({
     type: 'LOGOUT_USER',
     payload: {}
@@ -15,6 +20,7 @@ const saveMatches = matches => ({
 
 export { 
     authUser,
+    activateUser,
     logOutUser,
     saveMatches
 }
