@@ -10,12 +10,14 @@ import { PrivateRoute } from '../helpers/PrivateRoute';
 import ComponentList from './ComponentList';
 import SignUp from './SignUp';
 import ConfirmNewUser from './ConfirmNewUser';
+import Alert from '../components/alert';
 
 
 class App extends Component {   
     render() {
         return (
             <div>
+                <Alert />
                 <MainNav />
                 <div style={{'paddingTop': '56px'}}>
                     <Switch>

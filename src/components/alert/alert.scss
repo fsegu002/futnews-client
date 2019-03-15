@@ -1,0 +1,49 @@
+.alert-container{
+    position: absolute;
+    top: 0;
+    z-index: 10000;
+    right: 0;
+    left: 0;
+    width: 100%;
+
+    .alert{
+        border-radius: .15rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        button.close{
+            position: absolute;
+            top: 0;
+            right: 6px;
+        }
+        @media (min-width: 768px) {
+            button.close{
+                top: 3px;
+                right: 10px;
+            }
+        }
+        
+        h4, p{
+            margin: 0;
+        }
+        h4{
+            margin-right: 5px;
+            font-size: 1.3em;
+        }
+    }
+    .futnews-alert-success{    
+        background-color: rgba(176, 223, 40, 1);
+        color: #3c5815;
+    }
+    .futnews-alert-failure{    
+        background-color: rgba(228, 50, 5, 1);
+        color: #6b0707;
+    }
+
+}
