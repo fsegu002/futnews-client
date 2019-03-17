@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PrimaryButton } from '../components/buttons';
+import Icon from '../components/icon';
 
 
 class ComponentList extends Component {
@@ -20,6 +21,9 @@ class ComponentList extends Component {
                                 <li  className="list-group-item">
                                     <a href="#textarea">Textarea</a>
                                 </li>
+                                <li  className="list-group-item">
+                                    <a href="#icons">Textarea</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -35,7 +39,7 @@ class ComponentList extends Component {
                                     <div className="col-sm-12">
                                         <pre><code>
                                             {`
-                                            <PrimaryButton name="Sumbit"  />
+<PrimaryButton name="Sumbit"  />
                                             `}
                                         </code></pre>
                                     </div>
@@ -75,6 +79,47 @@ class ComponentList extends Component {
                                                     id="exampleFormControlTextarea1" 
                                                     rows="3"
                                                     placeholder="Start typing here" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* end textarea */}
+                        <br/> <br/>
+                        {/* start textarea */}
+                        <div className="row">
+                            <div id="icons" className="col-12">
+                                <h4>Icons</h4>
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <pre><code>
+                                            &lt;Icon icon="user" /&gt;
+                                        </code></pre>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <Icon icon="user" />
+                                        <p>user</p>
+                                    </div>
+                                    <div className="col">
+                                        <Icon icon="mail" />
+                                        <p>mail</p>
+                                    </div>
+                                    <div className="col">
+                                        <Icon icon="login" />
+                                        <p>login</p>
+                                    </div>
+                                    <div className="col">
+                                        <Icon icon="logout" />
+                                        <p>logout</p>
+                                    </div>
+                                    <div className="col">
+                                        <Icon icon="notification" />
+                                        <p>notification</p>
+                                    </div>
+                                    <div className="col">
+                                        <Icon icon="settings" />
+                                        <p>settings</p>
                                     </div>
                                 </div>
                             </div>
