@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import DateNav from '../components/dateNav';
-import GameItem from '../components/gameItem';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
-import { BallIndicator, MomentumIndicator, CommentsIndicator } from '../components/infoIndicators';
 import qs from 'query-string';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { getAllMatches } from '../services/matches.service'
 import { saveMatches } from '../store/actions'
+import GameCard from '../components/gameCard';
 
 
 class Home extends Component {
@@ -61,18 +59,8 @@ class Home extends Component {
   buildMatches = this.buildMatches.bind(this)
   buildMatches() {
     if(!this.state.matches) return false
-    const matches = this.state.matches.map(el => (
-      <li className="list-group-item shadow" key={el.id}>
-        <Link to={`/match/${el.id}`} >
-          <GameItem gamesInfo={el} />
-          
-          <div className="game-item-icons align-3-items-row">
-              <BallIndicator numberOfPlays={el.post_count} />
-              <MomentumIndicator />
-              <CommentsIndicator />
-          </div>
-        </Link>
-      </li>
+    const matches = this.state.matches.map((el, i) => (
+      <GameCard match={el} key={i} />
     ))
     return matches
   }

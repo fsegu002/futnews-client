@@ -10,10 +10,12 @@
 @import '../components/matchHeader/styles';
 @import '../components/matchPlay/styles';
 @import '../components/NewPostForm/styles';
+@import '../components/gameCard/gameCard';
+
 
 #root{
     position: relative;
-    color: var(--white);
+    color: var(--black);
 
     .app-background{
         z-index: -9999;
@@ -27,7 +29,7 @@
     }
 
     a{
-        color: var(--white);
+        color: var(--black);
         &:hover{
             color: var(--grey);
         }
@@ -67,7 +69,6 @@
 
     .icon{
         width: 25px;
-        fill: var(--blueish);
     }
 
 }

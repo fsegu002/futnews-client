@@ -8,7 +8,9 @@ export default function ScoreLabel({data}) {
         <div className="score-info">
             { (data.info.status === 'LIVE' || data.info.status === 'IN_PLAY' || data.info.status === 'FINISHED') ? 
                 <div className="score">
-                    <div>{homeTeam.score}</div><div>{awayTeam.score}</div>
+                    <div>{homeTeam.score}</div>
+                    <div className="ml-2 mr-2">-</div>
+                    <div>{awayTeam.score}</div>
                 </div> :
                 <div className="game-status">
                     <div className="date-label">

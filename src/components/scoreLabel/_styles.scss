@@ -1,19 +1,17 @@
 .score-info{
     &>div.score{
-        background-color: var(--greenish-dark); 
         border-radius: 4px;           
         font-size: 1.4em;
-        display: grid;
-        grid-template-columns: 50% 50%;
+        display: flex;
+        justify-content: center;
 
         &>div{
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 3px 0;
-            &:first-child{
-                border-right: 1px solid var(--greenish-light);
-            }
+            font-weight: bold;
+            font-size: 1.2em;
         }
     }
     &>div.game-status{
@@ -22,6 +20,10 @@
         justify-content: center;
         align-items: center;
         height: 100%;
+        .date-label{
+            font-weight: bold;
+            font-size: 1.2em;
+        }
         .status-label{
             font-size: 0.75em;
             text-transform: capitalize;

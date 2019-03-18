@@ -1,25 +1,3 @@
-#matches-list {
-    li.list-group-item{
-        padding: .75rem 0.6rem ;
-        margin-bottom: 6px ;
-        border-radius: 4px !important;
-        background-color: var(--white-transparent);
-        a{
-            display: block;
-            color: var(--white);
-            &:hover{
-                text-decoration: none;
-            }
-        }
-
-        @media screen and (min-width: 768px) {
-            padding: .75rem 1.25rem;
-            a{
-                font-size: 1.2em;
-            }
-        }
-    }
-}
 
 .align-3-items-row{
     font-size: 0.85em;
@@ -40,29 +18,22 @@
     }
 }
 .game-item-team-score{
-    height: 40px;
+    height: 60px;
     margin-bottom: 5px;
     img{
-        height: 25px;
+        height: 35px;
     }
     .home-section, .away-section{
-        display: flex;
+        display: grid;
+        grid-template-columns: 40px auto;
         align-items: center;
+        justify-content: start;
         label{
             margin: 0 8px;
         }
     }
-    .away-section{
-        flex-direction: row-reverse;
+    .away-section{        
+        grid-template-columns: auto 40px;
+        justify-content: end;
     }
-}
-
-.fa-futbol{
-    color: var(--black);
-}
-.fa-fire{
-    color: #e21818;
-}
-.fa-comment-alt{
-    color: #31cc23;
 }

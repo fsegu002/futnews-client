@@ -1,7 +1,7 @@
 :root{
     --greenish: #249892;
     --greenish-light: #2aa8a2;
-    --greenish-lighter: #41d6cf;
+    --greenish-lighter: #3fd4cd;
     --greenish-dark: #178681;  
     --greenish-darker: #0e6662;     
     
@@ -40,12 +40,17 @@
     }
 }
 
-.shadow{
+.gradient-background{
+    background: rgb(1,253,141);
+    background: linear-gradient(140deg, rgba(1,253,141,1) 0%, rgba(4,228,182,1) 52%, rgba(7,207,216,1) 100%);
+}
+
+.fn-shadow{
     box-shadow: 0px 2px 2px 0px rgba(80,80,80,0.55);
 }
-.shadow-light{
+.fn-shadow-light{
     box-shadow: 0px 2px 2px 0px rgba(130,130,130,0.55);
 }
-.shadow-dark{
+.fn-shadow-dark{
     box-shadow: 0px 2px 2px 0px rgba(30,30,30,0.55);
 }

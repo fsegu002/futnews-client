@@ -216,7 +216,7 @@ export default class NewPostForm extends Component {
                             </div>
                         </div>
                     </div>
-                    <button type="button" onClick={this.submitForm} className="btn btn-primary btn-block shadow">Post</button>
+                    <button type="button" onClick={this.submitForm} className="btn btn-primary btn-block fn-shadow">Post</button>
                     
                 </form>
             </div>

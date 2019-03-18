@@ -1,19 +1,22 @@
 import React from 'react'
+import Icon from '../icon'
+
+const color = 'var(--grey-dark)'
 
 export function BallIndicator({numberOfPlays}) {
-  return (
-    <div title="Plays recorded">
-        <i className="fas fa-futbol"></i>
-        <span>{numberOfPlays}</span>
-    </div>
-  )
+    return (
+        <div title="Plays recorded">
+            <Icon icon="goal" fill={color}/>
+            <span className="ml-2">{numberOfPlays}</span>
+        </div>
+    )
 }
 
 export function MomentumIndicator({momentumLevel}) {
     return (
         <div title="Momentum">
-            <i className="fas fa-fire"></i>
-            <span>+8</span>
+            <Icon icon="flame" fill={color}/>
+            <span className="ml-2">0</span>
         </div>
     )
 }
@@ -21,8 +24,8 @@ export function MomentumIndicator({momentumLevel}) {
 export function CommentsIndicator({numberOfComments}) {
     return (
         <div title="Comments">
-            <i className="far fa-comment-alt"></i>
-            <span>332</span>
+            <Icon icon="comment" fill={color}/>
+            <span className="ml-2">0</span>
         </div>
     )
 }

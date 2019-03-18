@@ -22,7 +22,7 @@ class ComponentList extends Component {
                                     <a href="#textarea">Textarea</a>
                                 </li>
                                 <li  className="list-group-item">
-                                    <a href="#icons">Textarea</a>
+                                    <a href="#icons">Icons</a>
                                 </li>
                             </ul>
                         </nav>
@@ -92,35 +92,54 @@ class ComponentList extends Component {
                                 <div className="row">
                                     <div className="col-sm-12">
                                         <pre><code>
-                                            &lt;Icon icon="user" /&gt;
+                                            &lt;Icon icon="user" fill="#666" /&gt;
                                         </code></pre>
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col">
+                                    <div className="col d-flex flex-column align-items-center">
                                         <Icon icon="user" />
                                         <p>user</p>
                                     </div>
-                                    <div className="col">
+                                    <div className="col d-flex flex-column align-items-center">
                                         <Icon icon="mail" />
                                         <p>mail</p>
                                     </div>
-                                    <div className="col">
+                                    <div className="col d-flex flex-column align-items-center">
                                         <Icon icon="login" />
                                         <p>login</p>
                                     </div>
-                                    <div className="col">
+                                    <div className="col d-flex flex-column align-items-center">
                                         <Icon icon="logout" />
                                         <p>logout</p>
                                     </div>
-                                    <div className="col">
+                                </div>
+                                <div className="row">
+                                    <div className="col d-flex flex-column align-items-center">
                                         <Icon icon="notification" />
                                         <p>notification</p>
                                     </div>
-                                    <div className="col">
+                                    <div className="col d-flex flex-column align-items-center">
                                         <Icon icon="settings" />
                                         <p>settings</p>
                                     </div>
+                                    <div className="col d-flex flex-column align-items-center">
+                                        <Icon icon="menu" fill="var(--greenish)" />
+                                        <p>menu</p>
+                                    </div>
+                                    <div className="col d-flex flex-column align-items-center">
+                                        <Icon icon="ellipsis" />
+                                        <p>ellipsis</p>
+                                    </div>
+                                    <div className="col d-flex flex-column align-items-center">
+                                        <Icon icon="flame" />
+                                        <p>flame</p>
+                                    </div>
+                                    <div className="col d-flex flex-column align-items-center">
+                                        <Icon icon="comment" />
+                                        <p>comment</p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

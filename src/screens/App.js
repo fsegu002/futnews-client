@@ -32,7 +32,7 @@ class App extends Component {
                         { (process.env.NODE_ENV === 'development') ? <Route path="/component-list" component={ComponentList} /> : false }
                     </Switch>
                 </div>
-                <div className="app-background"></div>
+                {/* <div className="app-background"></div> */}
             </div>
         );
     }

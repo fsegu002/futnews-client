@@ -28,10 +28,10 @@ class MainNav extends Component {
 
     render() {
         return (
-            <nav id="mainNav" className="navbar shadow">
+            <nav id="mainNav" className="navbar gradient-background fn-shadow">
                 <div className="container">
                     <a className="navbar-brand" href="/">FutNews</a>
-                    <button className="menu navbar-toggler circled-btn shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="menu navbar-toggler circled-btn fn-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i className="fas fa-bars"></i>
                     </button>
             
