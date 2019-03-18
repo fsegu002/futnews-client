@@ -35,15 +35,11 @@
         .img-logo{
             width: 40px;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
         }        
     }
     .away-section{        
         grid-template-columns: auto 40px;
         justify-content: end;
-
-        .img-logo{
-            justify-content: flex-end;
-        }        
     }
 }
