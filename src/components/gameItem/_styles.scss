@@ -18,7 +18,7 @@
     }
 }
 .game-item-team-score{
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     img{
         height: 35px;
@@ -30,10 +30,20 @@
         justify-content: start;
         label{
             margin: 0 8px;
+            font-size: 1.3em;
         }
+        .img-logo{
+            width: 40px;
+            display: flex;
+            justify-content: flex-start;
+        }        
     }
     .away-section{        
         grid-template-columns: auto 40px;
         justify-content: end;
+
+        .img-logo{
+            justify-content: flex-end;
+        }        
     }
 }

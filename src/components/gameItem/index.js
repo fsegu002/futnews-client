@@ -7,13 +7,17 @@ export default function GameItem({ gamesInfo, displayClass }) {
     return (
       <div className={"game-item-team-score align-3-items-row " + displayClass}>
           <div className="home-section">
+            <div  className="img-logo">
               <img src={homeTeam.logo_url} alt={homeTeam.short_name + "logo"} />
-              <label>{homeTeam.short_name.substring(0, 3)}</label>
+            </div>
+            <label>{homeTeam.short_name.substring(0, 3)}</label>
           </div>
           <ScoreLabel data={gamesInfo} />
           <div className="away-section">
-              <label>{awayTeam.short_name.substring(0, 3)}</label>
+            <label>{awayTeam.short_name.substring(0, 3)}</label>
+            <div  className="img-logo">
               <img src={awayTeam.logo_url} alt={awayTeam.short_name + "logo"} />
+            </div>
           </div>
       </div>
     )
