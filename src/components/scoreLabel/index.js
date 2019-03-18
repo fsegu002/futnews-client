@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import Label from '../label';
 
 export default function ScoreLabel({data}) {
     const homeTeam = data.teams[0]
@@ -17,7 +18,7 @@ export default function ScoreLabel({data}) {
                         {moment(data.utc_date).format('h:mm')}
                     </div>
                     <div className="status-label">
-                        {data.info.status}
+                        <Label title={data.info.status} />
                     </div>
                 </div>
             }
