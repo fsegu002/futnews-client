@@ -4,6 +4,7 @@ import GameItem from '../components/gameItem';
 import MatchHeader from '../components/matchHeader';
 import MatchPlay from '../components/matchPlay';
 import { getMatch } from '../services/matches.service';
+import { BallIndicator, MomentumIndicator, CommentsIndicator } from '../components/infoIndicators'
 
 export default class Match extends Component {
     state = {
@@ -63,6 +64,11 @@ export default class Match extends Component {
                                     matchId={this.state.match.id}>
                             {matchInfo}
                         </MatchHeader>
+                        <div className="game-item-icons align-3-items-row" style={style}>
+                            <BallIndicator numberOfPlays={this.state.match.post_count} />
+                            <MomentumIndicator />
+                            <CommentsIndicator />
+                        </div>
                         <div className="container">
                             <ul style={{'padding': '0'}}>
                                 {posts}
@@ -73,4 +79,9 @@ export default class Match extends Component {
             </div>
         )
     }
+}
+
+const style = {
+    borderTop: '1px solid var(--grey-lighter)',
+    borderBottom: '1px solid var(--grey-lighter)'
 }
