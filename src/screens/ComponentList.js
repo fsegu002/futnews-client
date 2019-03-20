@@ -124,7 +124,7 @@ class ComponentList extends Component {
                                         <p>settings</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="menu" fill="var(--greenish)" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="menu"/>
                                         <p>menu</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">

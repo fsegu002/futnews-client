@@ -1,5 +1,6 @@
 import React from 'react';
 import icons from './icons';
+import PropTypes from 'prop-types'
 
 const iconsList = icons();
 
@@ -12,5 +13,12 @@ const Icon = ({icon, fill, width, height}) => (
     <path d={iconsList[icon]}></path>
   </svg>
 );
+
+Icon.propTypes = {
+  icon: PropTypes.string.isRequired,
+  fill: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired
+}
 
 export default Icon;
