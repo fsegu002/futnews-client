@@ -98,45 +98,45 @@ class ComponentList extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="user" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="user" />
                                         <p>user</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="mail" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="mail" />
                                         <p>mail</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="login" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="login" />
                                         <p>login</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="logout" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="logout" />
                                         <p>logout</p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="notification" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="notification" />
                                         <p>notification</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="settings" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="settings" />
                                         <p>settings</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="menu" fill="var(--greenish)" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="menu" fill="var(--greenish)" />
                                         <p>menu</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="ellipsis" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="ellipsis" />
                                         <p>ellipsis</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="flame" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="flame" />
                                         <p>flame</p>
                                     </div>
                                     <div className="col d-flex flex-column align-items-center">
-                                        <Icon icon="comment" />
+                                        <Icon fill="var(--blueish-darker)" width="18" height="18" icon="comment" />
                                         <p>comment</p>
                                     </div>
 

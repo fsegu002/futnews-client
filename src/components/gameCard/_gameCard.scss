@@ -17,14 +17,6 @@
             .game-item-icons{
                 border-top: 1px solid var(--grey-lighter);
                 padding: 5px;
-
-                &>div{
-                    padding: 0;
-                }
-                & svg{
-                    width: initial;
-                    height: 18px;
-                }
             }
         }
 
