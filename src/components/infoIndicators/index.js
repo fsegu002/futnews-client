@@ -15,7 +15,7 @@ export function BallIndicator({numberOfPlays}) {
 export function MomentumIndicator({momentumLevel}) {
     return (
         <div title="Momentum">
-            <Icon icon="flame" fill={color}/>
+            <Icon icon="thermometer" fill={color}/>
             <span className="ml-2">{(momentumLevel) ? momentumLevel : '0'}</span>
         </div>
     )
