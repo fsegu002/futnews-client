@@ -2,18 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const MatchPlay = ({ playInfo, matchTeams }) => {
+    const homeTeamId = matchTeams[0].id
+    const awayTeamId = matchTeams[1].id
     const teams = {}
-    teams[matchTeams[0].id] = matchTeams[0]
-    teams[matchTeams[1].id] = matchTeams[1]
+    teams[homeTeamId] = matchTeams[0]
+    teams[awayTeamId] = matchTeams[1]
     
     const {minute, play_type_name, player_name, player_number, team_id} = playInfo
     return (
-        <li className={"play-item " + teams[team_id].team_type}>
+        <li className="play-item ">
             <div className="play-details">
                 <div className="play">
                     <div className="symbol">
+                        <span className="symbol-mark"></span>
                     </div>
-                    <div className="desc-wrapper">
+
+                    <div className={"desc-wrapper " + teams[team_id].team_type}>
                         <div className="description">
                             <div className="play-info">
                                 <div className="play-minute"><span>{minute}'</span></div>

@@ -1,11 +1,11 @@
 .play-item{
-    height: 60px;
+    min-height: 90px;
     position: relative;
     list-style-type: none;
 
     .v-line{
         width: 0;
-        height: 60px;
+        height: 100%;
         border-left: 1px solid var(--blueish);
         // border-right: 1px solid var(--blueish);
         position: absolute;
@@ -24,35 +24,72 @@
 
             .desc-wrapper{
                 display: flex;
-                justify-content: flex-start;
+                &.home-team{
+                    justify-content: flex-start;
+                    padding-right: 25px;
+                    .description{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        .play-info{
+                            display: flex;
+                            flex-direction: row-reverse;
+                            .play-minute{
+                                margin: 0;
+                                margin-left: 8px;
+                            }
+                        }
+                        .player-info{
+                            align-items: flex-end;
+                        }
+                    }
+                }
+                &.away-team{
+                    justify-content: flex-end;
+                    padding-left: 25px;
+                }
                 .description{
                     width: 50%;
                     font-size: .75em;
                     .play-info{
                         display: flex;
+                        color: var(--grey);
+                        font-size: .95em;
                         .play-minute{
                             margin-right: 8px;
+                            font-weight: bold;
                         }
                     }
                     .player-info{
                         display: flex;
                         flex-direction: column;
                         align-items: flex-start;
+                        .player-name{
+                            font-size: 1.05em;
+                            font-weight: bold;
+                        }
                     }
                 }
             }
         }
 
         .symbol{
-            margin: 0 auto;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--blueish);
-            border: 3px solid var(--blueish);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
 
-            span{
-                margin-top: 1px;
+            span.symbol-mark{
+                margin-top: 15px;
+                margin-left: 1px;
+                width: 11px;
+                height: 11px;
+                border-radius: 50%;
+                background-color: var(--blueish);
+                border: 3px solid var(--blueish);
             }
         }
     }
