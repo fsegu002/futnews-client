@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const MatchPlay = ({ playInfo }) => {
-    const {minute, play_type_name, player_name, player_number} = playInfo
-    console.log(playInfo)
+const MatchPlay = ({ playInfo, matchTeams }) => {
+    const teams = {}
+    teams[matchTeams[0].id] = matchTeams[0]
+    teams[matchTeams[1].id] = matchTeams[1]
+    
+    const {minute, play_type_name, player_name, player_number, team_id} = playInfo
     return (
-        <li className="play-item">
+        <li className={"play-item " + teams[team_id].team_type}>
             <div className="play-details">
                 <div className="play">
                     <div className="symbol">

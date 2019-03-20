@@ -48,7 +48,7 @@ export default class Match extends Component {
         let posts;
         if(this.state.posts){
             posts = this.state.posts.map((el, i) => (
-                <MatchPlay playInfo={el} key={i} />
+                <MatchPlay playInfo={el} matchTeams={this.state.match.teams} key={i} />
                 )
             )
         }
