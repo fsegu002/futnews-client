@@ -9,7 +9,7 @@ const MatchPlay = ({ playInfo, matchTeams, like }) => {
     teams[homeTeamId] = matchTeams[0]
     teams[awayTeamId] = matchTeams[1]
 
-    const {id, minute, play_type_name, player_name, player_number, team_id} = playInfo
+    const {id, minute, play_type_name, player_name, player_number, team_id, user_likes_post} = playInfo
     const likePost = () => {
         like(id)
     }
@@ -40,7 +40,9 @@ const MatchPlay = ({ playInfo, matchTeams, like }) => {
                             </div>
                             <div className="play-controls">
                                 <div className="like-control control" onClick={likePost}>
-                                    <Icon icon="heart" fill="var(--grey-light)" width="20" height="20" />
+                                    <Icon icon={(user_likes_post) ? "filled-heart" : "heart"} 
+                                            fill={(user_likes_post) ? "red" : "var(--grey-light)"} 
+                                            width="20" height="20" />
                                 </div>
                                 <div className="comment-control control">
                                     <Icon icon="comment" fill="var(--grey-light)" width="20" height="20" />

@@ -41,9 +41,18 @@ class Match extends Component {
     likePost = this.likePost.bind(this)
     likePost(id) {
         postLike(id)
-            .then(response => {
-                console.log('like resp', response)
+            .then(({data}) => {
+                const { post } = data;
+                const updatedPosts = this.state.posts.map(el => {
+                    if(el.id === post.id){
+                        el.user_likes_post = post.user_likes_post
+                        return el;
+                    }
+                    return el
+                })
+                this.setState({posts: updatedPosts}, () => console.log(this.state.posts))
             })
+            .catch(e => console.log(e))
     }
     
 
