@@ -9,7 +9,7 @@ const MatchPlay = ({ playInfo, matchTeams, like }) => {
     teams[homeTeamId] = matchTeams[0]
     teams[awayTeamId] = matchTeams[1]
 
-    const {id, minute, play_type_name, player_name, player_number, team_id, user_likes_post} = playInfo
+    const {id, minute, play_type_name, player_name, player_number, team_id, user_likes_post, number_of_likes} = playInfo
     const likePost = () => {
         like(id)
     }
@@ -39,16 +39,23 @@ const MatchPlay = ({ playInfo, matchTeams, like }) => {
                                 </div>
                             </div>
                             <div className="play-controls">
-                                <div className="like-control control" onClick={likePost}>
-                                    <Icon icon={(user_likes_post) ? "filled-heart" : "heart"} 
-                                            fill={(user_likes_post) ? "red" : "var(--grey-light)"} 
-                                            width="20" height="20" />
+                                <div className="icons">
+                                    <div className="like-control control" onClick={likePost}>
+                                        <Icon icon={(user_likes_post) ? "filled-heart" : "heart"} 
+                                                fill={(user_likes_post) ? "red" : "var(--grey-light)"} 
+                                                width="20" height="20" />
+                                    </div>
+                                    <div className="comment-control control">
+                                        <Icon icon="comment" fill="var(--grey-light)" width="20" height="20" />
+                                    </div>
+                                    <div className="share-control control">
+                                        <Icon icon="share" fill="var(--grey-light)" width="20" height="20" />
+                                    </div>
                                 </div>
-                                <div className="comment-control control">
-                                    <Icon icon="comment" fill="var(--grey-light)" width="20" height="20" />
-                                </div>
-                                <div className="share-control control">
-                                    <Icon icon="share" fill="var(--grey-light)" width="20" height="20" />
+                                <div className="summary">
+                                    <span>{number_of_likes} likes</span>
+                                    <span style={{margin: '0 5px'}}>&#xb7;</span>
+                                    <span>0 comments</span>
                                 </div>
                             </div>
                         </div>

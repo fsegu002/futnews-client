@@ -94,9 +94,17 @@
         }
 
         .play-controls{
-            display: flex;
-            justify-content: space-between;
+            margin-top: 10px;
             width: 80%;
+            .icons{
+                display: flex;
+                justify-content: space-between;
+            }
+            .summary{
+                display: flex;
+                color: var(--grey);
+                font-size: .85em;
+            }
         }
     }
 }

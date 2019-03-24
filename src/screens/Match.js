@@ -45,12 +45,13 @@ class Match extends Component {
                 const { post } = data;
                 const updatedPosts = this.state.posts.map(el => {
                     if(el.id === post.id){
+                        el.number_of_likes = post.number_of_likes
                         el.user_likes_post = post.user_likes_post
                         return el;
                     }
                     return el
                 })
-                this.setState({posts: updatedPosts}, () => console.log(this.state.posts))
+                this.setState({posts: updatedPosts})
             })
             .catch(e => console.log(e))
     }
