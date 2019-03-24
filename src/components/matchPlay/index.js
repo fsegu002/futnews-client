@@ -1,14 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Icon from '../icon'
 
-const MatchPlay = ({ playInfo, matchTeams }) => {
+const MatchPlay = ({ playInfo, matchTeams, like }) => {
     const homeTeamId = matchTeams[0].id
     const awayTeamId = matchTeams[1].id
     const teams = {}
     teams[homeTeamId] = matchTeams[0]
     teams[awayTeamId] = matchTeams[1]
+
+    const {id, minute, play_type_name, player_name, player_number, team_id} = playInfo
+    const likePost = () => {
+        like(id)
+    }
     
-    const {minute, play_type_name, player_name, player_number, team_id} = playInfo
     return (
         <li className="play-item ">
             <div className="play-details">
@@ -31,6 +36,17 @@ const MatchPlay = ({ playInfo, matchTeams }) => {
                                 </div>
                                 <div className="player-number">
                                     <span>#{player_number}</span>
+                                </div>
+                            </div>
+                            <div className="play-controls">
+                                <div className="like-control control" onClick={likePost}>
+                                    <Icon icon="heart" fill="var(--grey-light)" width="20" height="20" />
+                                </div>
+                                <div className="comment-control control">
+                                    <Icon icon="comment" fill="var(--grey-light)" width="20" height="20" />
+                                </div>
+                                <div className="share-control control">
+                                    <Icon icon="share" fill="var(--grey-light)" width="20" height="20" />
                                 </div>
                             </div>
                         </div>

@@ -92,5 +92,11 @@
                 border: 3px solid var(--blueish);
             }
         }
+
+        .play-controls{
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
     }
 }

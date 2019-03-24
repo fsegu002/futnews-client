@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import GameItem from '../components/gameItem';
 import MatchHeader from '../components/matchHeader';
 import MatchPlay from '../components/matchPlay';
 import { getMatch } from '../services/matches.service';
 import { BallIndicator, MomentumIndicator, CommentsIndicator } from '../components/infoIndicators'
+import { postLike } from '../services/like.service';
 
-export default class Match extends Component {
+class Match extends Component {
     state = {
         match: null,
         posts: null,
@@ -35,6 +37,14 @@ export default class Match extends Component {
     back() {
         this.props.history.goBack();
     }
+
+    likePost = this.likePost.bind(this)
+    likePost(id) {
+        postLike(id)
+            .then(response => {
+                console.log('like resp', response)
+            })
+    }
     
 
     render() {
@@ -48,7 +58,10 @@ export default class Match extends Component {
         let posts;
         if(this.state.posts){
             posts = this.state.posts.map((el, i) => (
-                <MatchPlay playInfo={el} matchTeams={this.state.match.teams} key={i} />
+                <MatchPlay playInfo={el} 
+                        matchTeams={this.state.match.teams} 
+                        key={i} 
+                        like={this.likePost}/>
                 )
             )
         }
@@ -85,3 +98,10 @@ const style = {
     borderTop: '1px solid var(--grey-lighter)',
     borderBottom: '1px solid var(--grey-lighter)'
 }
+
+const mapStateToProps = ({user}) => ({ user })
+
+Match = connect(
+  mapStateToProps
+)(Match)
+export default Match 
